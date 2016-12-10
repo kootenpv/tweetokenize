@@ -84,6 +84,8 @@ class Tokenizer(object):
     numbers_re = re.compile(r"{0}(?:\s*/\s*{0})?".format(number_re))  # deals with fractions
     del number_re
     other_re = r"(?:[^#\s\.]|\.(?!\.))+"
+    _token_regexs = ('usernames', 'urls', 'hashtags', 'initials',
+                     'times', 'phonenumbers', 'numbers')
     tokenize_re = re.compile(
         r"|".join(
             [getattr(x, 'pattern', x) for x in [usernames_re, urls_re, hashtags_re, initials_re, times_re, phonenumbers_re, numbers_re] + [word_re, ellipsis_re, other_re]]))
