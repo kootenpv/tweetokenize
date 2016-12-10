@@ -73,6 +73,7 @@ class Tokenizer(object):
                          "(?=\s+|$)".format(domains))
     del domains
     hashtags_re = re.compile(r"#\w+[\w'-]*\w+")
+    initials_re = re.compile(r"\^[a-zA-Z.-]+")
     ellipsis_re = re.compile(r"\.\.+")
     word_re = re.compile(
         r"(?:[a-zA-Z0-9]+['-]?[a-zA-Z]+[a-zA-Z0-9]*)|(?:[a-zA-Z0-9]*[a-zA-Z]+['-]?[a-zA-Z0-9]+)")
@@ -83,10 +84,9 @@ class Tokenizer(object):
     numbers_re = re.compile(r"{0}(?:\s*/\s*{0})?".format(number_re))  # deals with fractions
     del number_re
     other_re = r"(?:[^#\s\.]|\.(?!\.))+"
-    _token_regexs = ('usernames', 'urls', 'hashtags', 'times', 'phonenumbers', 'numbers')
     tokenize_re = re.compile(
         r"|".join(
-            [getattr(x, 'pattern', x) for x in [usernames_re, urls_re, hashtags_re, times_re, phonenumbers_re, numbers_re] + [word_re, ellipsis_re, other_re]]))
+            [getattr(x, 'pattern', x) for x in [usernames_re, urls_re, hashtags_re, initials_re, times_re, phonenumbers_re, numbers_re] + [word_re, ellipsis_re, other_re]]))
     repeating_re = re.compile(r"([a-zA-Z])\1\1+")
     doublequotes = (('“', '”'), ('"', '"'), ('‘', '’'), ('＂', '＂'))
     punctuation = ('!$%()*+,-/:;<=>?[\\]^_.`{|}~\'' + ''.join(c for t in doublequotes for c in t))
