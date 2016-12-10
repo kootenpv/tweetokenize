@@ -61,7 +61,7 @@ class Tokenizer(object):
     """
     _default_args = dict(
         lowercase=True, allcapskeep=True, normalize=3, usernames='USERNAME', urls='URL', hashtags=False,
-        phonenumbers='PHONENUMBER', times='TIME', numbers='NUMBER', ignorequotes=False, ignorestopwords=False
+        phonenumbers='PHONENUMBER', times='TIME', initials="INITIALS", numbers='NUMBER', ignorequotes=False, ignorestopwords=False
     )
     _lexicons = path.join(path.dirname(path.realpath(__file__)), 'lexicons/{}.txt')
 
