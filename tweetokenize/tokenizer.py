@@ -209,7 +209,7 @@ class Tokenizer(object):
                     break
             else:  # we didn't find a match for any token so far...
                 if self.ellipsis_re.match(word):
-                    tokens.append("...")
+                    tokens.append("ELLIPSIS")
                 else:  # split into tokens based on emoticons or punctuation
                     tokens.extend(self._separate_emoticons_punctuation(word))
         return tokens
