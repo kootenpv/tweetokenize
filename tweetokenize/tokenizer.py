@@ -73,7 +73,7 @@ class Tokenizer(object):
                          "(?=\s+|$)".format(domains))
     del domains
     hashtags_re = re.compile(r"#\w+[\w'-]*\w+")
-    initials_re = re.compile(r"\^[a-zA-Z.-]+")
+    initials_re = re.compile(r"\^ ?[a-zA-Z.-]+")
     ellipsis_re = re.compile(r"\.\.+")
     word_re = re.compile(
         r"(?:[a-zA-Z0-9]+['-]?[a-zA-Z]+[a-zA-Z0-9]*)|(?:[a-zA-Z0-9]*[a-zA-Z]+['-]?[a-zA-Z0-9]+)")
